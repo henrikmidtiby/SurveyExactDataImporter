@@ -1,0 +1,53 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# SurveyExactDataImporter
+
+The goal of SurveyExactDataImporter is to ...
+
+## Installation
+
+You can install the released version of SurveyExactDataImporter from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("SurveyExactDataImporter")
+```
+
+## How to export data in the proper format from SurveyExact
+
+1. Open the questionaire in SurveyExact
+2. Find the "Dataset" in the sidepanel to the right
+3. Under "Nyeste data" - "Eksporter datasæt" - "Excel XML"
+4. Check all boxes except "Behold linjeskift" in the dialog that appears
+5. Click on "Hent fil"
+
+
+## Example
+
+Load example dataset.
+
+```{r}
+data <- load('../testdata/dataset_1172477_20170127_356700854610526206.xlsx')
+
+get_variable_name(data, 's_73')
+get_variable_name_category(data, 's_73')
+get_variable_name_subcategory(data, 's_73')
+
+ggplot(data$data) + 
+  geom_bar(aes(s_73)) + 
+  scale_x_discrete(drop=FALSE) +
+  coord_flip() + 
+  labs(subtitle = get_variable_name(data, 's_73'), 
+       x = "")
+```

@@ -1,0 +1,12 @@
+Package: SurveyExactDataImporter
+Version: 0.0.0.9000
+Title: Imports data from SurveyExact
+Description: Imports data from SurveyExact and make sure that factors have the same ordering as in SurveyExact.
+Authors@R: person("Henrik Skov", "Midtiby", email = "henrikmidtiby@gmail.com", role = c("aut", "cre"))
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+ByteCompile: true
+Imports: 
+    readxl,
+    dplyr
