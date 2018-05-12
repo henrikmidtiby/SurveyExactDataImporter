@@ -9,4 +9,5 @@ LazyData: true
 ByteCompile: true
 Imports: 
     readxl,
-    dplyr
+    dplyr,
+    magrittr

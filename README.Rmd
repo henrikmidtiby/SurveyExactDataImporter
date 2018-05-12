@@ -14,14 +14,15 @@ knitr::opts_chunk$set(
 ```
 # SurveyExactDataImporter
 
-The goal of SurveyExactDataImporter is to ...
+The goal of SurveyExactDataImporter is to simplify loading of data from the online questionaire system SurveyExact.
 
 ## Installation
 
-You can install the released version of SurveyExactDataImporter from [CRAN](https://CRAN.R-project.org) with:
+You can install the development version of SurveyExactDataImporter from [github](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("SurveyExactDataImporter")
+library(devtools)
+install_github("henrikmidtiby/SurveyExactDataImporter")
 ```
 
 ## How to export data in the proper format from SurveyExact
@@ -35,19 +36,58 @@ install.packages("SurveyExactDataImporter")
 
 ## Example
 
+Load libraries
+
+```{r}
+library(SurveyExactDataImporter)
+library(ggplot2)
+```
+
 Load example dataset.
 
 ```{r}
-data <- load('../testdata/dataset_1172477_20170127_356700854610526206.xlsx')
+data <- load_survey_exact_data("data/dataset_1488637_20180512_1825827966544069436.xlsx")
+```
 
-get_variable_name(data, 's_73')
-get_variable_name_category(data, 's_73')
-get_variable_name_subcategory(data, 's_73')
+Show a summary of the imported data. 
+Note that the factor levels are sorted as specified in SurveyExact and not 
+alphabetically as otherwise is the standard approach (what else to to when it is not specified ...).
+```{r}
+summary(data$data)
+```
 
+
+Extract information about a certain element in the questionaire.
+
+```{r}
+get_variable_name(data, 's_6')
+get_variable_name_category(data, 's_6')
+get_variable_name_subcategory(data, 's_6')
+```
+
+Show distribution of answers to a single question (s_6).
+```{r}
 ggplot(data$data) + 
-  geom_bar(aes(s_73)) + 
+  geom_bar(aes(s_6)) + 
   scale_x_discrete(drop=FALSE) +
   coord_flip() + 
-  labs(subtitle = get_variable_name(data, 's_73'), 
+  labs(subtitle = get_variable_name(data, 's_6'), 
        x = "")
 ```
+
+
+Make a scatter plot of answers to two questions (s_6 and s_7).
+```{r}
+ggplot(data$data) + 
+  geom_count(aes(s_6, s_7)) + 
+  scale_x_discrete(drop=FALSE) +
+  scale_y_discrete(drop=FALSE) +
+  coord_flip() +
+  labs(title = get_variable_name_category(data, 's_6'), 
+       x = get_variable_name_subcategory(data, 's_6'), 
+       y = get_variable_name_subcategory(data, 's_7')) + 
+  theme(axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1), 
+        axis.text.y = element_text(angle = 30, hjust = 1, vjust = 1))
+```
+
+
