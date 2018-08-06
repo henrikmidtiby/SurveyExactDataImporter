@@ -18,7 +18,7 @@ The goal of SurveyExactDataImporter is to simplify loading of data from the onli
 
 ## Installation
 
-You can install the development version of SurveyExactDataImporter from [github](https://CRAN.R-project.org) with:
+You can install the development version of SurveyExactDataImporter from [github](https://github.com/henrikmidtiby/SurveyExactDataImporter) with:
 
 ``` r
 library(devtools)
