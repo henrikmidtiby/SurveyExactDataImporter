@@ -13,3 +13,5 @@ Imports:
     magrittr
 URL: https://github.com/henrikmidtiby/SurveyExactDataImporter
 BugReports: https://github.com/henrikmidtiby/SurveyExactDataImporter/issues
+Suggests: 
+    testthat
