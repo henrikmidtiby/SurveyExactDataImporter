@@ -4,9 +4,9 @@ library(tidyverse)
 load_survey_exact_data <- function(filename)
 {
   survey_labels <- readxl::read_excel(filename, col_names = FALSE, sheet = 1) %>%
-    dplyr::transmute(question_id = ..1,
-                     value = ..2,
-                     label = ..3)
+    dplyr::transmute(question_id = ...1,
+                     value = ...2,
+                     label = ...3)
 
   survey_variables <- readxl::read_excel(filename, col_names = TRUE, sheet = 2) %>%
     tidyr::extract(variableDescription,
