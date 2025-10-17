@@ -1,6 +1,12 @@
-library(readxl)
-library(tidyverse)
-
+#' Load data exported from SurveyXact
+#'
+#' @param filename Name of the file to import data from
+#'
+#' @returns A list of data elements from the imported file.
+#' @export
+#'
+#' @examples
+#' load_survey_exact_data('data/dataset_1488637_20180512_1825827966544069436.xlsx')
 load_survey_exact_data <- function(filename)
 {
   survey_labels <- readxl::read_excel(filename, col_names = FALSE, sheet = 1) %>%

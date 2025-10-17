@@ -10,9 +10,11 @@ ByteCompile: true
 Imports: 
     readxl,
     dplyr,
-    magrittr
+    magrittr,
+    readxl,
+    tidyverse
 URL: https://github.com/henrikmidtiby/SurveyExactDataImporter
 BugReports: https://github.com/henrikmidtiby/SurveyExactDataImporter/issues
 Suggests: 
     testthat
-RoxygenNote: 6.1.1
+RoxygenNote: 7.3.3
