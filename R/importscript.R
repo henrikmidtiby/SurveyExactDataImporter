@@ -4,9 +4,6 @@
 #'
 #' @returns A list of data elements from the imported file.
 #' @export
-#'
-#' @examples
-#' load_survey_exact_data('data/dataset_1488637_20180512_1825827966544069436.xlsx')
 load_survey_exact_data <- function(filename)
 {
   survey_labels <- readxl::read_excel(filename, col_names = c("question_id", "value", "label"), sheet = 1)
@@ -51,18 +48,40 @@ load_survey_exact_data <- function(filename)
 }
 
 
-get_variable_name <- function(data, identifier1) {
+#' Get name of variable in a particular column
+#'
+#' @param data Dataset
+#' @param identifier Column name
+#'
+#' @returns name of variable
+#' @export
+get_variable_name <- function(data, identifier) {
   data$survey_variables %>%
-    dplyr::filter(variableName == identifier1) %>%
+    dplyr::filter(variableName == identifier) %>%
     dplyr::pull(variableDescription)
 }
 
+
+#' Get categories of variable in a particular column
+#'
+#' @param data Dataset
+#' @param identifier Column name
+#'
+#' @returns categories of variable
+#' @export
 get_variable_name_category <- function(data, identifier) {
   data$survey_variables %>%
     dplyr::filter(variableName == identifier) %>%
     dplyr::pull(category)
 }
 
+#' Get categories of variable in a particular column
+#'
+#' @param data Dataset
+#' @param identifier Column name
+#'
+#' @returns subcategories of variable
+#' @export
 get_variable_name_subcategory <- function(data, identifier) {
   data$survey_variables %>%
     dplyr::filter(variableName == identifier) %>%

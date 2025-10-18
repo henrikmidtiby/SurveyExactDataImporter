@@ -1,5 +1,5 @@
 Package: SurveyExactDataImporter
-Version: 0.0.0.9000
+Version: 0.0.1.0000
 Title: Imports data from SurveyExact
 Description: Imports data from SurveyExact and make sure that factors have the same ordering as in SurveyExact.
 Authors@R: person("Henrik Skov", "Midtiby", email = "henrikmidtiby@gmail.com", role = c("aut", "cre"))
@@ -12,7 +12,7 @@ Imports:
     dplyr,
     magrittr,
     readxl,
-    tidyverse
+    tidyr
 URL: https://github.com/henrikmidtiby/SurveyExactDataImporter
 BugReports: https://github.com/henrikmidtiby/SurveyExactDataImporter/issues
 Suggests: 
